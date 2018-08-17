@@ -23,7 +23,7 @@ public class FeignTestTest {
 
     @Test
     public void get() {
-        Object hello = feignTest.getHello();
+        User hello = feignTest.getHello();
         log.info(hello.toString());
 
 //        assertEquals(user.getName(), "zhangjiawei");
@@ -31,7 +31,7 @@ public class FeignTestTest {
 
     @Test
     public void name() {
-        Object hahahaaha = feignTest.getHello1(new User("hahahaaha", 111));
+        User hahahaaha = feignTest.getHello1(new User("hahahaaha", 111));
         log.info(hahahaaha.toString());
         log.info(hahahaaha.getClass().getName());
 //        assertEquals(hahahaaha.getName(), "zhangjiawei1");
@@ -39,16 +39,20 @@ public class FeignTestTest {
 
     @Test
     public void tstPost() {
-        Object zhangjaiwe = feignTest.getHello2("zhangjaiwe", 12);
+        User zhangjaiwe = feignTest.getHello2("zhangjaiwe", 12);
         log.info(zhangjaiwe.toString());
         log.info(zhangjaiwe.getClass().getName());
     }
 
     @Test
     public void testPramGet(){
-        Object zhangjiaweiqwe_qwe_ = feignTest.getHello3("zhangjiaweiqweqwe ", "qwe");
+        User zhangjiaweiqwe_qwe_ = feignTest.getHello3("zhangjiaweiqweqwe ", "qwe");
         log.info(zhangjiaweiqwe_qwe_.toString());
     }
 
-
+    @Test
+    public void namePaReapGet() {
+        MonitorDTO monitorDTO = feignTest.getHello5("dajaihao ", "asdasdasdasdasd");
+        log.info(monitorDTO.toString());
+    }
 }

@@ -20,7 +20,7 @@ public class FeignTestConfig {
     public FeignTest feignTest(){
         FeignTest feignTest = Feign.builder().encoder(new JacksonEncoder()).decoder(new JacksonDecoder()).options(new Request.Options(1000, 3500))
                 .retryer(new Retryer.Default(5000, 5000, 3))
-                .target(FeignTest.class, "http://localhost:8080");
+                .target(FeignTest.class, "http://localhost:8888");
         return feignTest;
     }
 
