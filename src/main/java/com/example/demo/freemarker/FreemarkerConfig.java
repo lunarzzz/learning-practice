@@ -18,10 +18,10 @@ public class FreemarkerConfig {
 
     private static AtomicBoolean initFlag = new AtomicBoolean(false);
 
-    private static void  init() throws IOException {
+    private static void init() throws IOException {
         if (initFlag.compareAndSet(false,true)){
             configuration = new Configuration();
-            configuration.setDirectoryForTemplateLoading(new File("templates/"));
+            configuration.setDirectoryForTemplateLoading(new File("src/main/resources/freemarker"));
             configuration.setDefaultEncoding("UTF-8");
             configuration.setObjectWrapper(new DefaultObjectWrapper());
         }
