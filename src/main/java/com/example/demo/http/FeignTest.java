@@ -21,28 +21,26 @@ public interface FeignTest {
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @RequestLine("GET /hello")
-    Object getHello();
+    User getHello();
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @RequestLine("GET /hello2")
-    Object getHello1(User user);
+    User getHello1(User user);
 
     @Headers({"Content-Type: application/x-www-form-urlencoded", "Accept: application/json"})
     @RequestLine("POST /hello3")
     @Body("name={name}&age={age}")
-    Object getHello2(@Param("name") String name, @Param("age") int age);
+    User getHello2(@Param("name") String name, @Param("age") int age);
 
     @Headers({"Content-Type: application/form-data", "Accept: application/json"})
     @RequestLine("GET /hello4?client={client}&signature={signature}")
-    Object getHello3(@Param("client") String client, @Param("signature") String signature);
+    User getHello3(@Param("client") String client, @Param("signature") String signature);
+
+    @Headers({"Content-Type: application/form-data", "Accept: application/json"})
+    @RequestLine("GET /hello5?client={client}&signature={signature}")
+    MonitorDTO getHello5(@Param("client") String client, @Param("signature") String signature);
+
 }
 
-@Data
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
-class User{
-    private String name;
-    private int age;
-}
+
 
