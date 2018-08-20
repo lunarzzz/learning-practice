@@ -35,14 +35,17 @@ public class Solution39 {
 
     private void dfs(List<List<Integer>> lists, ArrayList<Integer> list, int[] candidates, int remain, int start) {
         if (remain < 0)
-            return;
-        if (remain == 0)// 找到了
+            return ;
+        if (remain == 0){
             lists.add(new ArrayList<>(list));
+        }
 
         for (int i = start; i < candidates.length; i++) {
             list.add(candidates[i]);
+
             dfs(lists, list, candidates, remain-candidates[i], i);
-            list.remove(list.size()-1);// 回溯
+
+            list.remove(list.size()-1);
         }
     }
 }
