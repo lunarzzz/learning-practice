@@ -1,14 +1,13 @@
 package com.example.demo.http;
 
 
-import feign.Body;
-import feign.Headers;
-import feign.Param;
-import feign.RequestLine;
+import feign.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import java.util.HashMap;
 
 
 /**
@@ -39,6 +38,11 @@ public interface FeignTest {
     @Headers({"Content-Type: application/form-data", "Accept: application/json"})
     @RequestLine("GET /hello5?client={client}&signature={signature}")
     MonitorDTO getHello5(@Param("client") String client, @Param("signature") String signature);
+
+    @Headers({"Accept: application/json"})
+    @RequestLine("GET /hello4")
+    User getHello5555(@QueryMap HashMap<String, String> map);
+
 
 }
 

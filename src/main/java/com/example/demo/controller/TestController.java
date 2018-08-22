@@ -4,6 +4,8 @@ import com.example.demo.test.ContentDTO;
 import com.example.demo.test.Test;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,23 @@ public class TestController {
 
     @Autowired
     private Test test;
+
+    @ApiOperation(value = "用户新增" , notes = "")
+    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
+    public Res test(@RequestBody User user){
+        System.out.println(user.getUsername() + " " + user.getPassword());
+
+        return new Res(200, "succeeeeeeee");
+    }
+
+//    @ApiOperation(value = "用户新增" , notes = "")
+//    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
+//    public Res test( String username,  String password){
+//        System.out.println(username + " " + password);
+//
+//        return new Res(200, "succeeeeeeee");
+//    }
+
 
     @ApiOperation(value = "用户新增" , notes = "")
     @RequestMapping(value = "test", method = RequestMethod.POST)
@@ -53,4 +72,13 @@ public class TestController {
             System.out.println(sss);
         }
     }
+
+
+}
+
+@Data
+@AllArgsConstructor
+class Res{
+    int code ;
+    String data;
 }

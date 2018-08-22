@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import static org.junit.Assert.*;
@@ -54,5 +55,14 @@ public class FeignTestTest {
     public void namePaReapGet() {
         MonitorDTO monitorDTO = feignTest.getHello5("dajaihao ", "asdasdasdasdasd");
         log.info(monitorDTO.toString());
+    }
+
+    @Test
+    public void name5555() {
+        HashMap<String, String> paramMap = new HashMap<>();
+        paramMap.put("client", "zhangjiaweiAPPPPPPP");
+        paramMap.put("signature", "i am the signature");
+        User hello5555 = feignTest.getHello5555(paramMap);
+        log.info(hello5555.toString());
     }
 }
