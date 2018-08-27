@@ -14,6 +14,6 @@ import java.util.Map;
 @ToString
 public class DataMeta {
 
-    private Map<String, StatsticDTO> data;
+    private Map<String, Map<String, Object>> data;
     private String time;
 }
