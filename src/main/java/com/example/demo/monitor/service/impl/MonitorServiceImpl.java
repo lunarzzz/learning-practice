@@ -81,16 +81,53 @@ public class MonitorServiceImpl implements MonitorService {
     }
 
     @Override
+    public MonitorResponseDTO getLoad4(String start, String end) {
+        MonitorParam monitorParam = new MonitorParam();
+        monitorParam.setName(MonitorConstant.APP_NAME);
+        monitorParam.setSignature(SignatureProvider.getSignature());
+        monitorParam.setClusterName("kaola-promotionbackend-compose-act_test2");
+        monitorParam.setStartTime(start);
+        monitorParam.setEndTime(end);
+        monitorParam.setMonitorItemName("system");
+        monitorParam.setDataItemName("other");
+        monitorParam.setType("cluster");
+        monitorParam.setFields("load1,load5,load15");
+        MonitorResponseDTO load = this.getLoad(monitorParam);
+        String s = JSON.toJSONString(load);
+        System.out.println(s);
+        return load;
+    }
+
+    @Override
     public Map<String, MonitorResponseDTO> getLoadIntegration() {
         Map<String, MonitorResponseDTO> map = new LinkedHashMap<>();
         MonitorResponseDTO load1 = getLoad(commonMonitorParam.setStartTime("-1h"));
         MonitorResponseDTO load2 = getLoad(commonMonitorParam.setStartTime("-3h"));
-        MonitorResponseDTO load3 = getLoad(commonMonitorParam.setStartTime("-5h"));
+        MonitorResponseDTO load3 = getLoad(commonMonitorParam.setStartTime("-6h"));
 
         map.put("hour", load1);
         map.put("threehours", load2);
-        map.put("day", load3);
+        map.put("sixhours", load3);
         return map;
+    }
+
+    /**
+     * 获取集群下机器(getServersByCluster)
+     * @param clusterName
+     * @param clusterId
+     * @return
+     */
+    @Override
+    public LinkedHashMap getServersByCluster(String clusterName, String clusterId) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put(MonitorConstant.PARAM_CLIENT,MonitorConstant.APP_NAME);
+        map.put(MonitorConstant.PARAM_SIGNATURE, SignatureProvider.getSignature());
+        map.put(MonitorConstant.PARAM_CLUSTER_NAME, "kaola-promotionbackend-compose-act_test2");
+        LinkedHashMap serversByCluster = monitorRepository.getServersByCluster(map);
+        if (serversByCluster == null && (Integer)serversByCluster.get("code") == 200)  {
+            return  new LinkedHashMap();
+        }
+        return serversByCluster;
     }
 
     private MonitorResponseDTO getMonitorInfo(HashMap<String, Object> paramMap){

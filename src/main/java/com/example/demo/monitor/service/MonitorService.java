@@ -3,6 +3,7 @@ package com.example.demo.monitor.service;
 import com.example.demo.monitor.DTO.MonitorParam;
 import com.example.demo.monitor.DTO.MonitorResponseDTO;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -18,6 +19,10 @@ public interface MonitorService {
 
     MonitorResponseDTO getLoad2(MonitorParam param);
 
+    MonitorResponseDTO getLoad4(String start, String end);
+
     Map<String,MonitorResponseDTO> getLoadIntegration();
+
+    LinkedHashMap getServersByCluster(String clusterName, String clusterId);
 
 }

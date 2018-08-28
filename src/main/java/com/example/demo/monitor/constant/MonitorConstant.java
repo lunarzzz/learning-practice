@@ -11,7 +11,6 @@ public class MonitorConstant {
 
     public static final String APP_SECRET = "34975ba2dcb94783bea795ed56eaa0cf";
 
-
     // 查询参数
     public static final String PARAM_CLIENT= "client";
     public static final String PARAM_SIGNATURE = "signature";

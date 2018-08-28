@@ -5,11 +5,13 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoop;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
+import io.netty.util.Recycler;
 
 /**
  * @description:
@@ -19,9 +21,13 @@ import io.netty.handler.codec.string.StringDecoder;
 public class TimeClient {
     public void connect(int port, String host) throws InterruptedException {
         // 配置客戶端NIO线程组
+        // EventLoopGroup Reactor线程池
         EventLoopGroup group = new NioEventLoopGroup();
+        NioEventLoop nioEventLoop;
+        Recycler recycler;
         try{
             // 客户端辅助启动类
+            // 使用Builder设计模式来代替多个 构造函数
             Bootstrap b = new Bootstrap();
             b.group(group).channel(NioSocketChannel.class)
                     .option(ChannelOption.TCP_NODELAY, true)

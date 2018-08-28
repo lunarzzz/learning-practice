@@ -9,6 +9,7 @@ import com.example.demo.monitor.VO.MonitorDTO2VO;
 import com.example.demo.monitor.converter.MonitorConverter;
 import com.example.demo.monitor.service.MonitorService;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ import java.util.Map;
  **/
 @RestController
 @RequestMapping("/api")
+@Slf4j
 public class MonitorController {
 
     @Autowired
@@ -85,5 +87,24 @@ public class MonitorController {
         Map<String, ChartVO> voMap = MonitorConverter.comvertMonitorDTOMap2ChartVOMap(loadIntegration, "max");
         ResponseBuilder<Map<String, ChartVO>> builder = new ResponseBuilder<>();
         return builder.buildSuccess("aaaa").buildSuccess(voMap).getResponse();
+    }
+
+    /**
+     * 查询按时间查询，最长六小时
+     * @return
+     */
+    @GetMapping("/monitor4")
+    public Response<ChartVO> queryInfoByLoadt(String start, String end){
+        log.info("start is {}, end is {}", start, end);
+        MonitorParam monitorParam = new MonitorParam();
+        MonitorResponseDTO load = monitorService.getLoad4(start, end);
+        ChartVO threeLevelVO = MonitorConverter.convertMonitorDTO2ThreeLevelVO3(load, "load1");
+        ResponseBuilder<ChartVO> responseBuilder = new ResponseBuilder();
+        log.info(JSON.toJSONString(threeLevelVO));
+        if (load.getCode() == 200){
+            Response<ChartVO> qwert= responseBuilder.buildSuccess("qweqweqwe").buildSuccess(threeLevelVO).getResponse();
+            return qwert;
+        }else
+            return responseBuilder.buildFail("error").getResponse();
     }
 }
