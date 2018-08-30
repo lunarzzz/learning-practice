@@ -1,7 +1,13 @@
 package com.example.demo.code.tree;
 
+import lombok.val;
+import org.junit.Test;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Stack;
+import java.util.stream.Collectors;
 
 /**
  * @author: zhangjiawei
@@ -10,14 +16,37 @@ import java.util.List;
 public class Solution589 {
     List<Integer> res = new ArrayList<>();
 
+    // 递归
     public List<Integer> preorder(Node root) {
         if(root ==null)
             return res;
-        if (root.children!=null){
-            res.add(root.val);
-        }
-        root.children.stream().forEach(a -> preorder(a));
+        res.add(root.val);
+        if(root.children != null)
+            root.children.forEach(a -> preorder(a));
         return res;
+    }
+
+    // 迭代法
+    public List<Integer> preorder2(Node root) {
+        Stack<Node> stack = new Stack();
+        if(root ==null)
+            return res;
+        stack.push(root);
+        while (!stack.empty()){
+            Node a = stack.pop();
+            res.add(a.val);
+            if (a.children!=null){
+                // 需要使得最左边结点在栈顶
+                Collections.reverse(a.children);
+                a.children.forEach(b -> stack.push(b));
+            }
+        }
+        return res;
+    }
+
+    @Test
+    public void test(){
+
     }
 }
 
