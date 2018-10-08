@@ -1,5 +1,8 @@
 package com.example.demo;
 import com.example.demo.controller.TestController;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,6 +37,7 @@ public class DemoApplicationTests {
 
     @InjectMocks
     TestController testController;
+
     @Before
     public void setUp(){
         mockMvc = MockMvcBuilders.standaloneSetup(testController).build();
