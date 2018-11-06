@@ -26,6 +26,7 @@
         <fastjson.version>1.2.47</fastjson.version>
         <junit.version>4.12</junit.version>
         <lombok.version>1.18.2</lombok.version>
+        <!--<micrometer.version></micrometer.version>-->
     </properties>
 
     <dependencies>
@@ -33,6 +34,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.yammer.metrics/metrics-core -->
+        <dependency>
+            <groupId>com.yammer.metrics</groupId>
+            <artifactId>metrics-core</artifactId>
+            <version>3.0.0-BETA1</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>io.micrometer</groupId>-->
+            <!--<artifactId>micrometer-registry-prometheus</artifactId>-->
+            <!--<version>${micrometer.version}</version>-->
+        <!--</dependency>-->
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -128,6 +143,13 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>5.0.0.Alpha2</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+            <version>${micrometer.version}</version>
         </dependency>
 
 
