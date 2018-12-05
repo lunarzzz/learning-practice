@@ -1,1 +1,1 @@
-# netease
+# My java practice module
