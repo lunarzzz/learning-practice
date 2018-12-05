@@ -3,7 +3,6 @@ package com.example.demo.controller;
 
 
 
-import com.example.demo.http.FeignTest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
