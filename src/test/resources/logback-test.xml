@@ -10,7 +10,8 @@
 
     <appender name="socket" class="com.splunk.logging.TcpAppender">
         <RemoteHost>127.0.0.1</RemoteHost>
-        <Port>8001</Port>
+        <!--<Port>8001</Port>-->
+        <Port>${splunk.port}</Port>
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>{"date":"%date{ISO8601}","thread": "[%thread]","level":"%level", "msg":"%msg"}%n</pattern>
         </layout>
@@ -27,7 +28,7 @@
 
 
 
-    <turboFilter class="com.example.demo.config.LogFilter">
-        <!--<Marker>sample</Marker>-->
-    </turboFilter>
+    <!--<turboFilter class="com.example.demo.config.LogFilter">-->
+        <!--&lt;!&ndash;<Marker>sample</Marker>&ndash;&gt;-->
+    <!--</turboFilter>-->
 </configuration>
