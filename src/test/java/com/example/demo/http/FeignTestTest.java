@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.stream.IntStream;
 
 import static org.junit.Assert.*;
 
@@ -65,4 +66,15 @@ public class FeignTestTest {
         User hello5555 = feignTest.getHello5555(paramMap);
         log.info(hello5555.toString());
     }
+
+    @Test
+    public void test(){
+        log.info("123");
+        log.info("456");
+        IntStream.rangeClosed(1, 100).forEach(a -> {
+            log.info("zhangjiawei");
+            log.info("helloworld");
+        });
+    }
+
 }

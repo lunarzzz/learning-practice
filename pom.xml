@@ -42,6 +42,12 @@
             <version>3.0.0-BETA1</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.splunk.logging</groupId>
+            <artifactId>splunk-library-javalogging</artifactId>
+            <version>1.5.2</version>
+        </dependency>
+
         <!--<dependency>-->
             <!--<groupId>io.micrometer</groupId>-->
             <!--<artifactId>micrometer-registry-prometheus</artifactId>-->
@@ -163,6 +169,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>splunk</id>
+            <name>splunk-releases</name>
+            <url>http://splunk.jfrog.io/splunk/ext-releases-local</url>
+        </repository>
+    </repositories>
 
 
 </project>
