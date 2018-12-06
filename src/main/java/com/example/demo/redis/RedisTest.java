@@ -14,12 +14,12 @@ import java.net.URL;
  * @author: zhangjiawei
  * @create: 2018-08-15 16:47
  **/
-public class RedisTest {
-
-    Logger logger = LoggerFactory.getLogger(RedisTest.class);
-    public static void main(String[] args) throws IOException {
-        HttpClient httpClient = HttpClient.New(new URL("http://www.baidu.com"));
-        boolean keepingAlive = httpClient.isKeepingAlive();
-        System.out.println(keepingAlive);
-    }
-}
+//public class RedisTest {
+//
+//    Logger logger = LoggerFactory.getLogger(RedisTest.class);
+//    public static void main(String[] args) throws IOException {
+//        HttpClient httpClient = HttpClient.New(new URL("http://www.baidu.com"));
+//        boolean keepingAlive = httpClient.isKeepingAlive();
+//        System.out.println(keepingAlive);
+//    }
+//}

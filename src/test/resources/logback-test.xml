@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration debug="true">
+    <define name="host" class="com.example.demo.config.LogPropertyDefiner"></define>
+    <define name="port" class="com.example.demo.config.PortPropertyDefiner"></define>
+
+
 　　　　　　<appender name="FILE" class="ch.qos.logback.core.FileAppender">
-　　　　　　　　<file>testFile.log</file>
-　　　　　　　　<append>true</append>
-　　　　　　　　<encoder>
-　　　　　　　　　　<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
-　　　　　　　　</encoder>
-　　　　　　</appender>
+    　　　　　　　　<file>testFile.log</file>
+    　　　　　　　　<append>true</append>
+    　　　　　　　　<encoder>
+    　　　　　　　　　　<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+    　　　　　　　　</encoder>
+    　　　　</appender>
 
     <appender name="socket" class="com.splunk.logging.TcpAppender">
-        <RemoteHost>127.0.0.1</RemoteHost>
-        <!--<Port>8001</Port>-->
-        <Port>${splunk.port}</Port>
+        <!--<RemoteHost>127.0.0.1</RemoteHost>-->
+        <RemoteHost>${host}</RemoteHost>
+        <Port>${port}</Port>
+        <!--<Port>${splunk.port}</Port>-->
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>{"date":"%date{ISO8601}","thread": "[%thread]","level":"%level", "msg":"%msg"}%n</pattern>
         </layout>
-        <!--<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
-            <!--<pattern>===%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger Line:%-3L - %msg%n</pattern>-->
-            <!--<charset>utf-8</charset>-->
-        <!--</encoder>-->
+    </appender>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
     </appender>
 　　　　　　<root level="DEBUG">
     <!--<filter class="com.example.demo.config.LogFilter"></filter>-->
 　　　　　　  <appender-ref ref="FILE" />
              <appender-ref ref="socket" />
+    <!--<appender-ref ref="console"/>-->
 　　　　　　</root>
 
 

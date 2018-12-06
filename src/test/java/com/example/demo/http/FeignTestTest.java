@@ -17,9 +17,8 @@ import java.util.stream.IntStream;
 
 import static org.junit.Assert.*;
 
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
-//@Slf4j
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class FeignTestTest {
 
     Logger log = LoggerFactory.getLogger(FeignTestTest.class);
@@ -27,16 +26,16 @@ public class FeignTestTest {
     public void test(){
         log.info("123");
         log.info("456");
-        IntStream.rangeClosed(1, 100).forEach(a -> {
+        IntStream.rangeClosed(1, 2).forEach(a -> {
             log.info("zhangjiawei");
             log.info("helloworld");
         });
 //        System.out.println(System.getenv());
     }
 
-    static {
-        System.setProperty("splunk.port", "8001");
-//        System.out.println(${splunk.port});
-    }
+//    static {
+//        System.setProperty("splunk.port", "8001");
+////        System.out.println(${splunk.port});
+//    }
 
 }

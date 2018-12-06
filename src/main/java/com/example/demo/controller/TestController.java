@@ -6,6 +6,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -71,6 +73,12 @@ public class TestController {
              ) {
             System.out.println(sss);
         }
+    }
+    Logger logger = LoggerFactory.getLogger(TestController.class);
+    @GetMapping("/hello123")
+    public String hello(){
+        logger.warn("hello ------ web jiaweizhang ");
+        return "hello ----web";
     }
 
 
