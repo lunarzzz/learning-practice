@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 import static org.junit.Assert.*;
@@ -24,11 +25,16 @@ public class FeignTestTest {
     Logger log = LoggerFactory.getLogger(FeignTestTest.class);
     @Test
     public void test(){
-        log.info("123");
+        log.info("12312312312312312312321");
         log.info("456");
         IntStream.rangeClosed(1, 2).forEach(a -> {
             log.info("zhangjiawei");
-            log.info("helloworld");
+//            try {
+//                TimeUnit.SECONDS.sleep(5);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+            log.warn("helloworld");
         });
 //        System.out.println(System.getenv());
     }
