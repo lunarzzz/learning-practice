@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration debug="true">
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
     <define name="host" class="com.example.demo.config.LogPropertyDefiner"></define>
     <define name="port" class="com.example.demo.config.PortPropertyDefiner"></define>
 
@@ -18,7 +18,9 @@
         <Port>${port}</Port>
         <!--<Port>${splunk.port}</Port>-->
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>{"date":"%date{ISO8601}","thread": "[%thread]","level":"%level", "msg":"%msg"}%n</pattern>
+            <!--<pattern>{"date":"%date{"yyyy-MM-dd'T'hh:mm:ss,SSSZ",UTC}","thread": "[%thread]","level":"%level", "msg":"%msg"}%n</pattern>-->
+            <pattern>{"date":"%d{ISO8601,GMT+8:00}","thread": "[%thread]","level":"%level", "msg":"%msg"}%n</pattern>
+            <!--<pattern>{"thread": "[%thread]","level":"%level", "msg":"%msg"}%n</pattern>-->
         </layout>
     </appender>
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
@@ -32,9 +34,6 @@
              <appender-ref ref="socket" />
     <!--<appender-ref ref="console"/>-->
 　　　　　　</root>
-
-
-
     <!--<turboFilter class="com.example.demo.config.LogFilter">-->
         <!--&lt;!&ndash;<Marker>sample</Marker>&ndash;&gt;-->
     <!--</turboFilter>-->
